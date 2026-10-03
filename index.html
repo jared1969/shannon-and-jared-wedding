@@ -92,10 +92,10 @@
   .stepper{display:flex;gap:.6rem;align-items:center}
   .step{min-width:56px;min-height:52px;font-size:1.6rem;line-height:1;padding:0;border-radius:12px;
     background:var(--paper);color:var(--sage);border:2px solid var(--line-strong);font-weight:700}
-  #count{text-align:center;max-width:7rem;font-size:1.25rem;font-weight:700}
-  .checks{display:flex;flex-direction:column;gap:.8rem}
-  .checks label{display:flex;gap:.7rem;align-items:flex-start;font-size:1.05rem;color:var(--ink);cursor:pointer}
-  .checks input{accent-color:var(--sage);margin-top:.3rem;flex:0 0 auto;width:1.25rem;height:1.25rem}
+  .stepper input{text-align:center;max-width:7rem;font-size:1.25rem;font-weight:700}
+  .fun{display:flex;flex-direction:column;gap:1.15rem}
+  .funrow{display:flex;flex-direction:column;gap:.5rem}
+  .funrow>label{font-size:1.05rem;color:var(--ink)}
 
   button{font-family:inherit;font-weight:700;font-size:1.1rem;letter-spacing:.04em;cursor:pointer;
     background:var(--sage);color:#FBF8F0;border:0;border-radius:999px;padding:.95rem 1.7rem;min-height:52px}
@@ -164,9 +164,10 @@
              (a forms.gle short link will NOT work and leaves the page in "opens soon" mode).
           2. Replace every *_ENTRY_PLACEHOLDER name with its real entry.NNNN id
              (from the form's "Get pre-filled link" trick).
-          3. Replace DRINKS_VALUE_PLACEHOLDER / CIGAR_VALUE_PLACEHOLDER with the EXACT option
-             text configured in the Google Form. Every radio/checkbox value on this page must
-             be byte-identical to the Form's option text, or Google silently drops the answer.
+          3. The attend radios' values ("Joyfully accept" / "Regretfully decline") must be
+             byte-identical to the Google Form's Multiple choice option text, or Google
+             silently drops the answer. The three counters (attending, drinks, cigars) are
+             numeric Short answer questions in the Form - no option text to match.
           4. Remove `disabled` from the fieldset and `hidden` from the Send button; add
              `hidden` to the #soonNote paragraph (so no-JS guests get the live form too).
           5. The script keeps the button in "opens soon" mode until the action contains
@@ -193,17 +194,31 @@
             <div class="field">
               <label class="lbl" for="count">Number attending</label>
               <div class="stepper">
-                <button type="button" class="step" id="countDown" aria-label="One fewer guest" hidden>&minus;</button>
+                <button type="button" class="step" data-for="count" data-d="-1" aria-label="One fewer guest" hidden>&minus;</button>
                 <input type="text" id="count" name="COUNT_ENTRY_PLACEHOLDER" value="0" inputmode="numeric" pattern="[1-4]" maxlength="1" title="A number from 1 to 4">
-                <button type="button" class="step" id="countUp" aria-label="One more guest" hidden>+</button>
+                <button type="button" class="step" data-for="count" data-d="1" aria-label="One more guest" hidden>+</button>
               </div>
             </div>
 
             <div class="field">
               <span class="lbl" id="funLbl">A couple of fun ones</span>
-              <div class="checks" role="group" aria-labelledby="funLbl">
-                <label><input type="checkbox" id="drinks" name="DRINKS_ENTRY_PLACEHOLDER" value="DRINKS_VALUE_PLACEHOLDER"> I will enjoy an alcoholic beverage during Social Hour (before the service) or during the reception (after the wedding).</label>
-                <label><input type="checkbox" id="cigar" name="CIGAR_ENTRY_PLACEHOLDER" value="CIGAR_VALUE_PLACEHOLDER"> I will enjoy a celebratory cigar after the wedding.</label>
+              <div class="fun" role="group" aria-labelledby="funLbl">
+                <div class="funrow">
+                  <label for="drinks">How many of your party will enjoy an alcoholic beverage during Social Hour (before the service) or during the reception (after the wedding)?</label>
+                  <div class="stepper">
+                    <button type="button" class="step" data-for="drinks" data-d="-1" aria-label="One fewer enjoying drinks" hidden>&minus;</button>
+                    <input type="text" id="drinks" name="DRINKS_ENTRY_PLACEHOLDER" value="0" inputmode="numeric" pattern="[0-4]" maxlength="1" title="A number from 0 to 4">
+                    <button type="button" class="step" data-for="drinks" data-d="1" aria-label="One more enjoying drinks" hidden>+</button>
+                  </div>
+                </div>
+                <div class="funrow">
+                  <label for="cigar">How many will enjoy a celebratory cigar after the wedding?</label>
+                  <div class="stepper">
+                    <button type="button" class="step" data-for="cigar" data-d="-1" aria-label="One fewer enjoying a cigar" hidden>&minus;</button>
+                    <input type="text" id="cigar" name="CIGAR_ENTRY_PLACEHOLDER" value="0" inputmode="numeric" pattern="[0-4]" maxlength="1" title="A number from 0 to 4">
+                    <button type="button" class="step" data-for="cigar" data-d="1" aria-label="One more enjoying a cigar" hidden>+</button>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -333,20 +348,20 @@
     for(var i=0;i<controls.length;i++){ controls[i].disabled = off; }
   }
 
-  // Big +/- buttons for the guest count (JS-only enhancement; the field stays typeable).
-  var countEl = document.getElementById("count");
-  var countUp = document.getElementById("countUp");
-  var countDown = document.getElementById("countDown");
-  function nudge(d){
-    var v = parseInt(countEl.value, 10);
-    if(isNaN(v)) v = 0;
-    v = Math.min(4, Math.max(0, v + d));
-    countEl.value = String(v);
+  // Big +/- buttons for every counter (JS-only enhancement; the fields stay typeable).
+  var steps = document.querySelectorAll(".step");
+  for(var s = 0; s < steps.length; s++){
+    (function(btn){
+      btn.hidden = false;
+      btn.addEventListener("click", function(){
+        var el = document.getElementById(btn.getAttribute("data-for"));
+        var v = parseInt(el.value, 10);
+        if(isNaN(v)) v = 0;
+        v = Math.min(4, Math.max(0, v + parseInt(btn.getAttribute("data-d"), 10)));
+        el.value = String(v);
+      });
+    })(steps[s]);
   }
-  countUp.hidden = false;
-  countDown.hidden = false;
-  countUp.addEventListener("click", function(){ nudge(1); });
-  countDown.addEventListener("click", function(){ nudge(-1); });
   form.addEventListener("change", function(e){
     if(e.target.type === "radio") syncExtra();
   });
