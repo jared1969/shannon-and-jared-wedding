@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Shannon &amp; Jared — October 2, 2027</title>
+<meta name="description" content="Shannon Hatmaker and Jared Campbell are getting married — an evening celebration at the Botanic Garden at Georgia Southern University, Statesboro, Georgia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Mulish:wght@400;600;700&display=swap">
+<style>
+  /* Layout: single centered column, airy coastal invitation; deliberate light theme */
+  :root{
+    color-scheme: light;
+    --sand:#F6F0E5;        /* page ground */
+    --paper:#FCF8F1;       /* card ground */
+    --ink:#333A2E;         /* deep garden green-brown text */
+    --sage:#5F7050;        /* primary accent */
+    --dune:#A9742F;        /* amber accent, decorative only */
+    --dune-deep:#8A5D22;   /* amber for readable text (4.5:1 on sand) */
+    --plume:#CDB997;       /* pampas */
+    --line:#E6DCCA;        /* decorative hairlines */
+    --line-strong:#8F8875; /* form-control borders (3:1+ on paper and sand) */
+    --muted:#5E5C50;       /* secondary text */
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  [hidden]{display:none !important}
+  body{
+    background:var(--sand);
+    color:var(--ink);
+    font-family:"Mulish", system-ui, -apple-system, sans-serif;
+    line-height:1.65;
+    font-size:18px;
+  }
+  .wrap{max-width:680px;margin:0 auto;padding-block:clamp(2rem,6vw,4.5rem);padding-left:20px;padding-right:20px}
+  h1,h2,h3{font-family:"Cormorant Garamond", Georgia, serif;font-weight:500;text-wrap:balance;margin:0}
+  .eyebrow{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--sage);font-weight:700}
+  p{margin:0}
+
+  /* Hero */
+  .hero{text-align:center;display:flex;flex-direction:column;align-items:center;gap:1.1rem}
+  .plumes{width:min(300px,70%);height:120px;display:block}
+  .names{font-size:clamp(3rem,13vw,5.4rem);line-height:.98;letter-spacing:.01em}
+  .names .amp{font-style:italic;color:var(--dune);font-weight:400;display:block;font-size:.5em;margin:.12em 0}
+  .tagline{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:1.6rem;color:var(--muted)}
+  .when{font-size:1.2rem;letter-spacing:.02em}
+  .where{color:var(--muted);font-size:1.05rem}
+  .rule{width:64px;height:1px;background:var(--dune);opacity:.6;border:0;margin:0 auto}
+
+  /* Sections */
+  section{margin-top:clamp(2.6rem,7vw,4rem)}
+  .sec-head{text-align:center;display:flex;flex-direction:column;align-items:center;gap:.5rem;margin-bottom:1.6rem}
+  .sec-head h2{font-size:2.1rem}
+
+  /* Timeline */
+  .timeline{display:flex;flex-direction:column;max-width:440px;margin:0 auto}
+  .ev{display:grid;grid-template-columns:5.4rem 1fr;gap:1rem;align-items:baseline;padding:.8rem 0;border-bottom:1px solid var(--line)}
+  .ev:last-child{border-bottom:0}
+  .ev .t{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.45rem;color:var(--sage);font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
+  .ev .d{font-size:1.05rem;min-width:0}
+  .ev .d small{display:block;color:var(--muted);font-size:.9rem}
+
+  /* Card */
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:clamp(1.3rem,4vw,2rem)}
+  .lead{text-align:center;color:var(--muted);max-width:52ch;margin:0 auto 1.4rem}
+
+  /* Form */
+  form{display:flex;flex-direction:column;gap:1.25rem}
+  fieldset.fields{border:0;margin:0;padding:0;min-inline-size:0;display:flex;flex-direction:column;gap:1.25rem}
+  .field{display:flex;flex-direction:column;gap:.45rem}
+  .lbl{font-size:.9em;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--sage)}
+  input[type=text],textarea{
+    font-family:inherit;font-size:1.05rem;color:var(--ink);background:var(--sand);
+    border:2px solid var(--line-strong);border-radius:9px;padding:.75rem .85rem;width:100%;
+  }
+  input::placeholder,textarea::placeholder{color:var(--muted);opacity:1}
+  textarea{resize:vertical;min-height:5rem}
+  input:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--dune-deep);outline-offset:2px}
+  .choice{display:flex;gap:.6rem;flex-wrap:wrap}
+  .choice label{display:flex;align-items:center;gap:.55rem;font-size:1.05rem;color:var(--ink);
+    border:1px solid var(--line-strong);border-radius:999px;padding:.6rem 1.05rem;cursor:pointer;background:var(--paper);min-height:48px}
+  .choice input{accent-color:var(--sage);margin:0;width:1.2rem;height:1.2rem}
+  .choice label:has(input:checked){border-color:var(--sage);background:#EDEFE3}
+  .extra{display:flex;flex-direction:column;gap:1.25rem}
+  .checks{display:flex;flex-direction:column;gap:.8rem}
+  .checks label{display:flex;gap:.7rem;align-items:flex-start;font-size:1.05rem;color:var(--ink);cursor:pointer}
+  .checks input{accent-color:var(--sage);margin-top:.3rem;flex:0 0 auto;width:1.25rem;height:1.25rem}
+
+  button{font-family:inherit;font-weight:700;font-size:1.1rem;letter-spacing:.04em;cursor:pointer;
+    background:var(--sage);color:#FBF8F0;border:0;border-radius:999px;padding:.95rem 1.7rem;min-height:52px}
+  button[disabled]{opacity:.6;cursor:default}
+  .send{display:flex;flex-direction:column;gap:.9rem;align-items:center;margin-top:.3rem;text-align:center}
+  .note{color:var(--muted);font-size:.95rem;max-width:46ch;margin:0 auto}
+  .soon{color:var(--dune-deep);font-weight:700;font-size:1.05rem;text-align:center}
+
+  footer{margin-top:clamp(3rem,8vw,4.5rem);text-align:center;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:1rem;font-size:1rem}
+  footer .plumes{height:70px;width:150px}
+
+  @media (prefers-reduced-motion:no-preference){
+    .sway{transform-origin:bottom center;animation:sway 7s ease-in-out infinite}
+    @keyframes sway{0%,100%{transform:rotate(-1.2deg)}50%{transform:rotate(1.2deg)}}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <svg class="plumes sway" id="plumesTop" viewBox="0 0 300 120" aria-hidden="true"></svg>
+    <p class="eyebrow">Together with their families</p>
+    <h1 class="names">Shannon<span class="amp">&amp;</span>Jared</h1>
+    <p class="tagline">are getting married</p>
+    <hr class="rule">
+    <p class="when">Saturday, the second of October, two&nbsp;thousand&nbsp;twenty-seven</p>
+    <p class="where">The Botanic Garden at Georgia Southern University<br>Statesboro, Georgia &middot; an evening celebration</p>
+  </header>
+
+  <main>
+
+  <section aria-labelledby="evening-h">
+    <div class="sec-head"><p class="eyebrow">The evening</p><h2 id="evening-h">How the night unfolds</h2></div>
+    <div class="timeline">
+      <div class="ev"><div class="t">5:00</div><div class="d">Social hour<small>Music, hors d'oeuvres &amp; drinks as guests arrive</small></div></div>
+      <div class="ev"><div class="t">6:00</div><div class="d">Ceremony<small>In the garden</small></div></div>
+      <div class="ev"><div class="t">7:00</div><div class="d">Reception<small>Buffet dinner, toasts &amp; dancing</small></div></div>
+      <div class="ev"><div class="t">10:00</div><div class="d">Farewell<small>A bubble send-off to close the night</small></div></div>
+    </div>
+    <p class="note" style="margin-top:1.1rem">All times are in the evening. They're our plan and may shift slightly &mdash; the invitation will carry the final schedule.</p>
+  </section>
+
+  <section aria-labelledby="travel-h">
+    <div class="sec-head"><p class="eyebrow">Travel &amp; stay</p><h2 id="travel-h">Getting there</h2></div>
+    <p class="lead">The Garden sits at 1503 Bland Avenue in Statesboro. For out-of-town family, we'll arrange a hotel room block and a shuttle to and from the Garden so no one has to worry about driving &mdash; those details will be added here closer to the date.</p>
+  </section>
+
+  <section aria-labelledby="gifts-h">
+    <div class="sec-head"><p class="eyebrow">Your presence is the present</p><h2 id="gifts-h">In lieu of gifts</h2></div>
+    <p class="lead">Having you with us is the only gift we're hoping for. We are not accepting presents &mdash; but if you'd like to mark the day, we would be touched by a donation in our names to <strong>a cause close to our hearts</strong>. We'll share the details here and with the invitation.</p>
+  </section>
+
+  <section id="rsvp" aria-labelledby="rsvp-h">
+    <div class="sec-head"><p class="eyebrow">Will you join us?</p><h2 id="rsvp-h">RSVP</h2></div>
+    <p class="lead">Kindly reply by <strong>September 11, 2027</strong>. One tap sends your reply straight to us, and your answers help us plan the bar, the buffet, and a few cigars.</p>
+    <div class="card">
+      <p class="soon" id="soonNote">Our online RSVP opens soon &mdash; please check back.</p>
+      <!--
+        RSVP backend: a Google Form. The page ships FAIL-SAFE: fieldset disabled, Send button
+        hidden, "opens soon" note visible, and the action points at a .invalid host that can
+        never resolve. TO WIRE IT UP (all five steps, then commit):
+          1. Replace the action below with the form's FULL response URL:
+             https://docs.google.com/forms/d/e/<long FORM id>/formResponse
+             (a forms.gle short link will NOT work and leaves the page in "opens soon" mode).
+          2. Replace every *_ENTRY_PLACEHOLDER name with its real entry.NNNN id
+             (from the form's "Get pre-filled link" trick).
+          3. Replace DRINKS_VALUE_PLACEHOLDER / CIGAR_VALUE_PLACEHOLDER with the EXACT option
+             text configured in the Google Form. Every radio/checkbox value on this page must
+             be byte-identical to the Form's option text, or Google silently drops the answer.
+          4. Remove `disabled` from the fieldset and `hidden` from the Send button; add
+             `hidden` to the #soonNote paragraph (so no-JS guests get the live form too).
+          5. The script keeps the button in "opens soon" mode until the action contains
+             docs.google.com AND formResponse AND no PLACEHOLDER string remains anywhere.
+        Before sharing the link: one curl test (expect HTTP 200 and a real Sheet row - put
+        TEST in the name), then a live submission from a real phone, verified in the Sheet.
+      -->
+      <form id="rsvpForm" method="POST" action="https://FORM_ACTION_PLACEHOLDER.invalid/">
+        <fieldset class="fields" id="formFields" disabled>
+          <div class="field">
+            <label class="lbl" for="guestName">Name(s) in your party</label>
+            <input type="text" id="guestName" name="NAME_ENTRY_PLACEHOLDER" placeholder="e.g. Carol &amp; Ray Smith" autocomplete="name" required>
+          </div>
+
+          <div class="field">
+            <span class="lbl" id="attendLbl">Will you attend?</span>
+            <div class="choice" role="radiogroup" aria-labelledby="attendLbl">
+              <label><input type="radio" name="ATTEND_ENTRY_PLACEHOLDER" value="Joyfully accept" id="attendYes" checked> Joyfully accept</label>
+              <label><input type="radio" name="ATTEND_ENTRY_PLACEHOLDER" value="Regretfully decline" id="attendNo"> Regretfully decline</label>
+            </div>
+          </div>
+
+          <div class="extra" id="extra">
+            <div class="field">
+              <label class="lbl" for="count">Number attending</label>
+              <input type="text" id="count" name="COUNT_ENTRY_PLACEHOLDER" value="2" inputmode="numeric" pattern="[1-9]|1[0-2]" maxlength="2" title="A number from 1 to 12">
+            </div>
+
+            <div class="field">
+              <span class="lbl" id="funLbl">A couple of fun ones</span>
+              <div class="checks" role="group" aria-labelledby="funLbl">
+                <label><input type="checkbox" id="drinks" name="DRINKS_ENTRY_PLACEHOLDER" value="DRINKS_VALUE_PLACEHOLDER"> I will enjoy an alcoholic beverage during Social Hour (before the service) or during the reception (after the wedding).</label>
+                <label><input type="checkbox" id="cigar" name="CIGAR_ENTRY_PLACEHOLDER" value="CIGAR_VALUE_PLACEHOLDER"> I will enjoy a celebratory cigar after the wedding.</label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="lbl" for="dietary">Dietary needs or allergies</label>
+              <input type="text" id="dietary" name="DIETARY_ENTRY_PLACEHOLDER" placeholder="Anything we should know for the buffet">
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="lbl" for="message">A note for us (optional)</label>
+            <textarea id="message" name="MESSAGE_ENTRY_PLACEHOLDER" placeholder="Well-wishes, a song request, anything"></textarea>
+          </div>
+        </fieldset>
+
+        <div class="send">
+          <button type="submit" id="sendBtn" hidden>Send my reply</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  </main>
+
+  <footer>
+    <svg class="plumes" id="plumesBottom" viewBox="0 0 150 70" aria-hidden="true"></svg>
+    <p>Shannon Hatmaker &amp; Jared Campbell &middot; October 2, 2027 &middot; Statesboro, Georgia</p>
+  </footer>
+
+</div>
+
+<script>
+  // --- Pampas grass motif: soft feathery plumes drawn as thin strokes ---
+  function drawPlumes(svg, plumes){
+    var NS="http://www.w3.org/2000/svg";
+    plumes.forEach(function(p){
+      var g = document.createElementNS(NS,"g");
+      var cx = p.x + Math.sin(p.lean)*p.len*0.12;   // stalk control point
+      var cy = p.base - p.len*0.55;
+      var tipX = p.x + Math.sin(p.lean)*p.len*0.42;
+      var tipY = p.base - p.len;
+      function pt(t){
+        return [
+          (1-t)*(1-t)*p.x + 2*(1-t)*t*cx + t*t*tipX,
+          (1-t)*(1-t)*p.base + 2*(1-t)*t*cy + t*t*tipY
+        ];
+      }
+      var stalk = document.createElementNS(NS,"path");
+      stalk.setAttribute("d","M "+p.x+" "+p.base+" Q "+cx+" "+cy+" "+tipX+" "+tipY);
+      stalk.setAttribute("fill","none");
+      stalk.setAttribute("stroke","var(--plume)");
+      stalk.setAttribute("stroke-width","1.1");
+      stalk.setAttribute("stroke-linecap","round");
+      g.appendChild(stalk);
+      // feathery barbs, longest at the base of the head, tapering to the tip
+      var n = p.barbs;
+      for(var i=0;i<n;i++){
+        var f = i/(n-1);            // 0 lower head -> 1 tip
+        var t = 0.26 + f*0.74;
+        var q = pt(t);
+        var barbLen = p.width*(1 - f*0.72);
+        [-1,1].forEach(function(side){
+          var ex = q[0] + side*barbLen*0.72 + Math.sin(p.lean)*barbLen*0.2;
+          var ey = q[1] - barbLen*0.92;
+          var cxp = q[0] + side*barbLen*0.3;
+          var cyp = q[1] - barbLen*0.55;
+          var barb = document.createElementNS(NS,"path");
+          barb.setAttribute("d","M "+q[0]+" "+q[1]+" Q "+cxp+" "+cyp+" "+ex+" "+ey);
+          barb.setAttribute("fill","none");
+          barb.setAttribute("stroke","var(--plume)");
+          barb.setAttribute("stroke-width","0.8");
+          barb.setAttribute("stroke-linecap","round");
+          barb.setAttribute("opacity",(0.5+0.35*(1-f)).toFixed(2));
+          g.appendChild(barb);
+        });
+      }
+      svg.appendChild(g);
+    });
+  }
+
+  try{
+    drawPlumes(document.getElementById("plumesTop"), [
+      {x:150, base:120, len:104, lean:0.0, barbs:22, width:15},
+      {x:118, base:120, len:86, lean:-0.28, barbs:18, width:13},
+      {x:182, base:120, len:86, lean:0.28, barbs:18, width:13},
+      {x:96,  base:120, len:66, lean:-0.5, barbs:14, width:11},
+      {x:204, base:120, len:66, lean:0.5, barbs:14, width:11}
+    ]);
+    drawPlumes(document.getElementById("plumesBottom"), [
+      {x:75, base:70, len:60, lean:0.0, barbs:16, width:11},
+      {x:57, base:70, len:48, lean:-0.32, barbs:13, width:9},
+      {x:93, base:70, len:48, lean:0.32, barbs:13, width:9}
+    ]);
+  }catch(e){ /* decorative only */ }
+
+  // --- RSVP form behavior (enhancement only; the markup is safe without it) ---
+  var form = document.getElementById("rsvpForm");
+  var fields = document.getElementById("formFields");
+  var extra = document.getElementById("extra");
+  var sendBtn = document.getElementById("sendBtn");
+  var soonNote = document.getElementById("soonNote");
+
+  // Wired only when the action is the real formResponse endpoint and every placeholder is gone.
+  var action = form.getAttribute("action") || "";
+  var wired = action.indexOf("docs.google.com") !== -1 &&
+              action.indexOf("formResponse") !== -1 &&
+              !form.querySelector('[name*="PLACEHOLDER"], [value*="PLACEHOLDER"]');
+
+  if(wired){
+    fields.disabled = false;
+    sendBtn.hidden = false;
+    soonNote.hidden = true;
+  }
+
+  function attending(){ return document.getElementById("attendYes").checked; }
+  function syncExtra(){
+    var off = !attending();
+    extra.hidden = off;
+    // Disabled controls are left out of the POST, so a decline never records a party count.
+    var controls = extra.querySelectorAll("input");
+    for(var i=0;i<controls.length;i++){ controls[i].disabled = off; }
+  }
+  form.addEventListener("change", function(e){
+    if(e.target.type === "radio") syncExtra();
+  });
+  syncExtra();
+
+  // Double-tap guard: disable the button once the (plain, top-level) POST is on its way.
+  form.addEventListener("submit", function(e){
+    if(!wired){ e.preventDefault(); return; }
+    setTimeout(function(){ sendBtn.disabled = true; sendBtn.textContent = "Sending…"; }, 0);
+  });
+
+  // Coming back from Google's confirmation page restores this page from the back/forward
+  // cache; reset the button so a guest can correct and resend.
+  window.addEventListener("pageshow", function(){
+    sendBtn.disabled = false;
+    sendBtn.textContent = "Send my reply";
+  });
+</script>
+</body>
+</html>
