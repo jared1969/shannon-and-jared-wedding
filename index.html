@@ -194,7 +194,7 @@
               <label class="lbl" for="count">Number attending</label>
               <div class="stepper">
                 <button type="button" class="step" id="countDown" aria-label="One fewer guest" hidden>&minus;</button>
-                <input type="text" id="count" name="COUNT_ENTRY_PLACEHOLDER" value="0" inputmode="numeric" pattern="[1-9]|1[0-2]" maxlength="2" title="A number from 1 to 12">
+                <input type="text" id="count" name="COUNT_ENTRY_PLACEHOLDER" value="0" inputmode="numeric" pattern="[1-4]" maxlength="1" title="A number from 1 to 4">
                 <button type="button" class="step" id="countUp" aria-label="One more guest" hidden>+</button>
               </div>
             </div>
@@ -340,7 +340,7 @@
   function nudge(d){
     var v = parseInt(countEl.value, 10);
     if(isNaN(v)) v = 0;
-    v = Math.min(12, Math.max(0, v + d));
+    v = Math.min(4, Math.max(0, v + d));
     countEl.value = String(v);
   }
   countUp.hidden = false;
